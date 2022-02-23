@@ -107,6 +107,7 @@ departmentPrompts = data => {
                     }
                 }
             ])
+
             .then((response) => {
                 addDepartment(response.name);
             })
@@ -123,6 +124,7 @@ departmentPrompts = data => {
                     }
                 }
             ])
+
             .then((response) => {
                 removeDepartment(response.id);
             })
@@ -167,6 +169,7 @@ rolePrompts = data => {
                     }
                 }
             ])
+
             .then((response) => {
                 addRole(response.title, response.salary, response.department_id);
             })
@@ -184,6 +187,7 @@ rolePrompts = data => {
                     }
                 }
             ])
+
             .then((response) => {
                 removeRole(response.title);
             })
@@ -191,11 +195,108 @@ rolePrompts = data => {
 };
 
 employeePrompts = data => {
-    console.log(data.command);
+    switch(data.command) {
+        case "View all Employees":
+            getAllEmployees();
+            break;
+        case "View Employee by their manager":
+            return inquirer.prompt([
+                {
+                    type: "number",
+                    name: "manager_id",
+                    message: "Enter the manager's id to view employees they manage",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                }
+            ])
+
+            .then(response => {
+                employeeByManager(response.manager_id);
+            });
+        
+        case "View Employee by their department":
+            return inquirer.prompt([
+                {
+                    type: "number",
+                    name: "id",
+                    message: "Enter the department's id to view employees that work in it",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                }
+            ])
+
+            .then(response => {
+                employeesByDepartment(response.id);
+            });
+
+        case "Add Employee":
+            return inquirer.prompt([
+                {
+                    type: "input",
+                    name: "first_name",
+                    message: "Enter the first name of this employee",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                },
+                {
+                    type: "input",
+                    name: "last_name",
+                    message: "Enter the last name of this employee",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                },
+                {
+                    type: "number",
+                    name: "role_id",
+                    message: "Enter this employee's role",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                },
+                {
+                    type: "number",
+                    name: "manager_id",
+                    message: "Enter the manager id for this employee",
+                }
+            ])
+
+            .then((response) => {
+                addEmployee(response.first_name, response.last_name, response.role_id, response.manager_id);
+            })
+
+        case "Remove Employee":
+            return inquirer.prompt([
+                {
+                    type: "input",
+                    name: "id",
+                    message: "Enter id of the employee you want to remove",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                }
+            ])
+
+            .then((response) => {
+                removeEmployee(response.id);
+            })
+    }
 };
-
-
-
 
 
 initialPrompt()
