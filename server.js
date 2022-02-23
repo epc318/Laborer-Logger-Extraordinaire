@@ -129,8 +129,65 @@ departmentPrompts = data => {
     }
 };
 
-rolePrompts = data => {
-    console.log(data.command);
+rolePrompts = data => {    
+    switch(data.command) {
+        case "View all Roles":
+            getAllRoles();
+            break;
+        case "Add Role":
+            return inquirer.prompt([
+                {
+                    type: "input",
+                    name: "title",
+                    message: "Enter the name of the Role you want to add",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                },
+                {
+                    type: "number",
+                    name: "salary",
+                    message: "Enter the salary of the Role you want to add",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                },
+                {
+                    type: "number",
+                    name: "department_id",
+                    message: "Enter the desired id of the Role you want to add",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                }
+            ])
+            .then((response) => {
+                addRole(response.title, response.salary, response.department_id);
+            })
+
+        case "Remove Role":
+            return inquirer.prompt([
+                {
+                    type: "input",
+                    name: "title",
+                    message: "Enter the name of the Role you want to add",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                }
+            ])
+            .then((response) => {
+                removeRole(response.title);
+            })
+    }
 };
 
 employeePrompts = data => {
