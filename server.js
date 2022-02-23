@@ -1,7 +1,8 @@
 const dataBase = require("./db/connection");
 const inquire = require("inquirer");
 const { getAllDepartments, addDepartment, removeDepartment } = require("./routes/APIroutes/department");
-
+const { getAllRoles, addRole, removeRole } = require("./routes/APIroutes/role");
+const { getAllEmployees, addEmployee, removeEmployee } = require("./routes/APIroutes/employee");
 
 dataBase.connect(err => {
     if(err)
@@ -22,7 +23,6 @@ const initialPrompt = () => {
             ]
         },
 
-        //department prompts
         {
             type: "list",
             name: "action",
@@ -92,7 +92,7 @@ const initialPrompt = () => {
 departmentPrompts = data => {
     switch(data.command) {
         case "View All Departments":
-            getDepartments();
+            getAllDepartments();
             break;
         case "Add Department":
             return inquirer.prompt([

@@ -37,5 +37,4 @@ removeDepartment = (id) => {
     })
 }
 
-
 module.exports = { getAllDepartments, addDepartment, removeDepartment };
