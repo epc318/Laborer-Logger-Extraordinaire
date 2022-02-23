@@ -1,14 +1,14 @@
 const dataBase = require("../../db/sqlconnect");
 
 getAllEmployees = () => {
-    const sqlDB = `SELECT e.id, e.first_name, e.last_name,
-                 role.title AS current_role, role.salary AS currnet_salary,
+    const sqlDB = `SELECT emp.id, emp.first_name, emp.last_name,
+                 role.title AS current_role, role.salary AS current_salary,
                  department.name AS department,
-                 m.first_name AS manager_name 
-                 FROM employee e
-                 LEFT JOIN role ON e.role_id = role.id
+                 mang.first_name AS manager_name 
+                 FROM employee emp
+                 LEFT JOIN role ON emp.role_id = role.id
                  LEFT JOIN department ON role.department_id = department.id
-                 LEFT JOIN employee m ON m.id = e.manager_id`;
+                 LEFT JOIN employee mang ON mang.id = emp.manager_id`;
                  dataBase.query(sqlDB, (err, result) => {
         if(err)
         throw err;
