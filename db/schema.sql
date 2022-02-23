@@ -1,2 +1,2 @@
-CREATE DATABASE IF NOT EXISTS Laborer_Logger;
-USE Laborer_Logger;
+CREATE DATABASE IF NOT EXISTS laborer_logger;
+USE laborer_logger;
