@@ -1,6 +1,6 @@
 const dataBase = require("./db/connection");
 const inquire = require("inquirer");
-const {getDepartment, addDepartment, removeDepartment} = require("./routes/APIroutes/department");
+const { getAllDepartments, addDepartment, removeDepartment } = require("./routes/APIroutes/department");
 
 
 dataBase.connect(err => {
