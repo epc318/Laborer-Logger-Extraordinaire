@@ -1,0 +1,25 @@
+{
+  "name": "laborer-logger-extraordinaire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epc318/Laborer-Logger-Extraordinaire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epc318/Laborer-Logger-Extraordinaire/issues"
+  },
+  "homepage": "https://github.com/epc318/Laborer-Logger-Extraordinaire#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3"
+  }
+}
