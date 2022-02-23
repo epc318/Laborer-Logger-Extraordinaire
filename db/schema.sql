@@ -22,7 +22,6 @@ CREATE TABLE role (
     CONSTRAINT fk_dept FOREIGN KEY (dept_id) REFERENCES dept(id) ON DELETE SET NULL
 );
 
-
 CREATE TABLE employee (
     id INT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,

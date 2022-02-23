@@ -27,9 +27,9 @@ addDepartment = (name) => {
     });
 };
 
-removeDepartment = (id) => {
-    const sqlDB = `DELETE FROM department WHERE id = ?`;
-    dataBase.query(sqlDB, id, (err, result) => {
+removeDepartment = (name) => {
+    const sqlDB = `DELETE FROM department WHERE name = ?`;
+    dataBase.query(sqlDB, name, (err, result) => {
         if(err)
         throw err;
         console.log("Department successfully removed");

@@ -110,12 +110,12 @@ departmentPrompts = data => {
             .then((response) => {
                 addDepartment(response.name);
             })
-        case "Remove department":
+        case "Remove Department":
             return inquirer.prompt([
                 {
                     type: "input",
-                    name: "id",
-                    message: "Provide the id of the department you want to delete:",
+                    name: "name",
+                    message: "Enter the name of the Department you want to remove",
                     validate: response => {
                         if(response) {
                             return true;
