@@ -89,6 +89,53 @@ const initialPrompt = () => {
     })
 };
 
+departmentPrompts = data => {
+    switch(data.command) {
+        case "View All Departments":
+            getDepartments();
+            break;
+        case "Add Department":
+            return inquirer.prompt([
+                {
+                    type: "input",
+                    name: "name",
+                    message: "Enter the name of the Department you want to add",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        }
+                    }
+                }
+            ])
+            .then((response) => {
+                addDepartment(response.name);
+            })
+        case "Remove department":
+            return inquirer.prompt([
+                {
+                    type: "input",
+                    name: "id",
+                    message: "Provide the id of the department you want to delete:",
+                    validate: response => {
+                        if(response) {
+                            return true;
+                        } 
+                    }
+                }
+            ])
+            .then((response) => {
+                removeDepartment(response.id);
+            })
+    }
+};
+
+rolePrompts = data => {
+    console.log(data.command);
+};
+
+employeePrompts = data => {
+    console.log(data.command);
+};
 
 
 
@@ -97,6 +144,12 @@ const initialPrompt = () => {
 initialPrompt()
     .then(response => {
         if(response.category === "Departments") {
-            promptDepartments(response);
+            departmentPrompts(response);
         }
-    })
+        else if(response.category === "Roles") {
+            rolePrompts(response);
+        }
+        else if(response.category === "Employees") {
+            employeePrompts(response);
+        }
+    });
