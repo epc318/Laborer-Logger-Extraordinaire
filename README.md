@@ -21,12 +21,13 @@ Labor Logger Extraordinaire is an executive business application that allows adm
 ![Source Code Example](Assets/Images/Code_Example.png)
 
 ## Installation
-<p>Node.js, MySQL2, and the Inquirer.js npm packages are necesary to run this application. Copy the files or simply clone the repository. Navigate to the repository via the terminal and run
+<p>Node.js, MySQL2, and the Inquirer.js npm packages are necessary to run this application. Copy the files or simply clone the repository. Navigate to the repository via the terminal and run
 <code> npm init </code> follow the prompts until finished. Next, enter <code> node install inquirer mysql2 sequelize console.table </code> from the the root of the directory.</p>
 
-[Application Walkthrough Video:](https://watch.screencastify.com/v/HWad0CBvP2cdTr9CcsxV)
+If you're having trouble, take a look at my installation/running the application walkthrough video [Here]()
 
 ## Usage
+<p>After succussful installation and setup, you must createa new database via the MySQL shell command terminal. In the MySQL shell, type the command <code> mysql -u root -p </code>. If you entered this correctly, you should be prompted to type in your password. Enter your password and type the command <code> source db/schema.sql </code> to intiate database and table creation. Now you can exit the MySQL shell, and type <code> npm start </code> in your terminal, making sure you are still in the root directory. If everything was done correctly you can now follow the prompts to manage your info.</p>
 
 ## Contribution
 - This project was made by Evan Carlson and contains references and material learned in the University of Minnesota Web Dev Bootcamp.
