@@ -8,23 +8,21 @@
 
 ## Table of Contents
 - [Built With](#languages)
-- [URL](#url)
-- [Deployed Application Screenshot](#App)
 - [Source Code Screenshot](#Code)
+- [Installation](#Install)
+- [Usage](#Usage)
 - [Contribution](#contributing)
 - [Questions](#questions)
 
 ## Built With
 * JavaScript
 
-## URL
-Visit the application [HERE]()
-
-## Deployed Application Screenshot
-![Full page screenshot]()
-
 ## Source Code Screenshot
 ![Source Code Example]()
+
+## Installation
+
+## Usage
 
 ## Contributions
 - This project was made by Evan Carlson and contains references and material learned in the University of Minnesota Web Dev Bootcamp.
