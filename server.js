@@ -1,4 +1,4 @@
-const dataBase = require("./db/connection");
+const dataBase = require("./db/sqlconnect.js");
 const inquire = require("inquirer");
 const { getAllDepartments, addDepartment, removeDepartment } = require("./routes/APIroutes/department");
 const { getAllRoles, addRole, removeRole } = require("./routes/APIroutes/role");
@@ -10,7 +10,7 @@ dataBase.connect(err => {
 });
 
 const initialPrompt = () => {
-    return inquirer.prompt([
+    return inquire.prompt([
         {
             type: "list",
             name: "sector",

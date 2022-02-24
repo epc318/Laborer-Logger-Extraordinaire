@@ -3,14 +3,14 @@ CREATE DATABASE IF NOT EXISTS laborer_logger;
 USE laborer_logger;
 
 
-DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS dept;
 DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS employee;
 
 
-CREATE TABLE department (
+CREATE TABLE dept (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
+    name VARCHAR(30) NOT NULL
 );
 
 
