@@ -49,9 +49,9 @@ const initialPrompt = () => {
             message: "What do you need to do with Roles today?",
             choices:
             [
-                "View ALL roles",
+                "View ALL Roles",
                 "Add Role",
-                "Remove a role"
+                "Remove Role"
             ],
             when: ({sector}) => {
                 if(sector === "Roles") {
@@ -135,7 +135,7 @@ departmentPrompts = data => {
 
 rolePrompts = data => {    
     switch(data.action) {
-        case "View all Roles":
+        case "View ALL Roles":
             getAllRoles();
             break;
         case "Add Role":
@@ -163,7 +163,7 @@ rolePrompts = data => {
                 {
                     type: "number",
                     name: "department_id",
-                    message: "Enter the desired id of the Role you want to add",
+                    message: "Enter the despartment id of the Role you want to add",
                     validate: response => {
                         if(response) {
                             return true;
@@ -181,7 +181,7 @@ rolePrompts = data => {
                 {
                     type: "input",
                     name: "title",
-                    message: "Enter the name of the Role you want to add",
+                    message: "Enter the name of the Role you want to remove",
                     validate: response => {
                         if(response) {
                             return true;
