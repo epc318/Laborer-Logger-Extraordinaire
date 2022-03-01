@@ -29,9 +29,9 @@ const initialPrompt = () => {
             message: "What do you need to do with Departments today?",
             choices:
             [
-                "View ALL departments",
-                "Add a department",
-                "Remove a department"
+                "View ALL Departments",
+                "Add Department",
+                "Remove Department"
             ],
             when: ({sector}) => {
                 if(sector === "Departments") {
@@ -73,8 +73,8 @@ const initialPrompt = () => {
                 "Add an employee",
                 "Remove an employee"
             ],
-            when: ({category}) => {
-                if(category === "Employees") {
+            when: ({sector}) => {
+                if(sector === "Employees") {
                     return true;
                 }
                 else {
@@ -90,10 +90,11 @@ const initialPrompt = () => {
 };
 
 departmentPrompts = data => {
-    switch(data.command) {
+    switch(data.action) {
         case "View All Departments":
             getAllDepartments();
             break;
+            
         case "Add Department":
             return inquirer.prompt([
                 {
@@ -132,7 +133,7 @@ departmentPrompts = data => {
 };
 
 rolePrompts = data => {    
-    switch(data.command) {
+    switch(data.action) {
         case "View all Roles":
             getAllRoles();
             break;
@@ -195,7 +196,7 @@ rolePrompts = data => {
 };
 
 employeePrompts = data => {
-    switch(data.command) {
+    switch(data.action) {
         case "View all Employees":
             getAllEmployees();
             break;
