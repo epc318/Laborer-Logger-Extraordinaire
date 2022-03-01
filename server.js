@@ -91,7 +91,7 @@ const initialPrompt = () => {
 
 departmentPrompts = data => {
     switch(data.action) {
-        case "View All Departments":
+        case "View ALL Departments":
             getAllDepartments();
             break;
 
@@ -112,6 +112,7 @@ departmentPrompts = data => {
             .then((response) => {
                 addDepartment(response.name);
             })
+
         case "Remove Department":
             return inquire.prompt([
                 {
@@ -127,7 +128,7 @@ departmentPrompts = data => {
             ])
 
             .then((response) => {
-                removeDepartment(response.id);
+                removeDepartment(response.name);
             })
     }
 };
