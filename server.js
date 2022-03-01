@@ -50,7 +50,7 @@ const initialPrompt = () => {
             choices:
             [
                 "View ALL roles",
-                "Add a role",
+                "Add Role",
                 "Remove a role"
             ],
             when: ({sector}) => {
@@ -94,9 +94,9 @@ departmentPrompts = data => {
         case "View All Departments":
             getAllDepartments();
             break;
-            
+
         case "Add Department":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "input",
                     name: "name",
@@ -113,7 +113,7 @@ departmentPrompts = data => {
                 addDepartment(response.name);
             })
         case "Remove Department":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "input",
                     name: "name",
@@ -138,7 +138,7 @@ rolePrompts = data => {
             getAllRoles();
             break;
         case "Add Role":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "input",
                     name: "title",
@@ -176,7 +176,7 @@ rolePrompts = data => {
             })
 
         case "Remove Role":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "input",
                     name: "title",
@@ -201,7 +201,7 @@ employeePrompts = data => {
             getAllEmployees();
             break;
         case "View Employee by their manager":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "number",
                     name: "manager_id",
@@ -219,7 +219,7 @@ employeePrompts = data => {
             });
         
         case "View Employee by their department":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "number",
                     name: "id",
@@ -237,7 +237,7 @@ employeePrompts = data => {
             });
 
         case "Add Employee":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "input",
                     name: "first_name",
@@ -280,7 +280,7 @@ employeePrompts = data => {
             })
 
         case "Remove Employee":
-            return inquirer.prompt([
+            return inquire.prompt([
                 {
                     type: "input",
                     name: "id",
@@ -302,13 +302,13 @@ employeePrompts = data => {
 
 initialPrompt()
     .then(response => {
-        if(response.category === "Departments") {
+        if(response.sector === "Departments") {
             departmentPrompts(response);
         }
-        else if(response.category === "Roles") {
+        else if(response.sector === "Roles") {
             rolePrompts(response);
         }
-        else if(response.category === "Employees") {
+        else if(response.sector === "Employees") {
             employeePrompts(response);
         }
     });
