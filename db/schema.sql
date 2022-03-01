@@ -3,9 +3,9 @@ CREATE DATABASE IF NOT EXISTS laborer_logger;
 USE laborer_logger;
 
 
-DROP TABLE IF EXISTS dept;
-DROP TABLE IF EXISTS role;
-DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS Deptartments;
+DROP TABLE IF EXISTS Roles;
+DROP TABLE IF EXISTS Employees;
 
 
 CREATE TABLE dept (
