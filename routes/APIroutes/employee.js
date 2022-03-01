@@ -1,14 +1,7 @@
 const dataBase = require("../../db/sqlconnect");
 
 getAllEmployees = () => {
-    const sqlDB = `SELECT emp.id, emp.first_name, emp.last_name,
-                 role.title AS current_role, role.salary AS current_salary,
-                 department.name AS department,
-                 mang.first_name AS manager_name 
-                 FROM employee emp
-                 LEFT JOIN role ON emp.role_id = role.id
-                 LEFT JOIN department ON role.department_id = department.id
-                 LEFT JOIN employee mang ON mang.id = emp.manager_id`;
+    const sqlDB = `SELECT * FROM employee`;
                  dataBase.query(sqlDB, (err, result) => {
         if(err)
         throw err;
@@ -22,12 +15,9 @@ getAllEmployees = () => {
     });
 };
 
-addEmployee = (first_name, last_name, role_id, manager_id) => {
-    if(!manager_id) {
-        manager_id = null;
-    }
-    const sqlDB = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`;
-    const condition  = [first_name, last_name, role_id, manager_id];
+addEmployee = (first_name, last_name, role_id) => {
+    const sqlDB = `INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)`;
+    const condition  = [first_name, last_name, role_id];
     dataBase.query(sqlDB, condition, (err, rows) => {
         if(err)
         throw err;
@@ -41,7 +31,7 @@ removeEmployee = (id) => {
     dataBase.query(sqlDB, id, (err, result) => {
         if(err)
         throw err;
-        console.log("Role successfully removed");
+        console.log("Employee successfully removed");
         process.exit();
     })
 }

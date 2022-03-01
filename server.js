@@ -69,9 +69,9 @@ const initialPrompt = () => {
             message: "What do you need to do with Employees today?",
             choices:
             [
-                "View ALL employees",
-                "Add an employee",
-                "Remove an employee"
+                "View ALL Employees",
+                "Add Employee",
+                "Remove Employee"
             ],
             when: ({sector}) => {
                 if(sector === "Employees") {
@@ -163,7 +163,7 @@ rolePrompts = data => {
                 {
                     type: "number",
                     name: "department_id",
-                    message: "Enter the despartment id of the Role you want to add",
+                    message: "Enter the department id of the Role you want to add",
                     validate: response => {
                         if(response) {
                             return true;
@@ -198,45 +198,9 @@ rolePrompts = data => {
 
 employeePrompts = data => {
     switch(data.action) {
-        case "View all Employees":
+        case "View ALL Employees":
             getAllEmployees();
             break;
-        case "View Employee by their manager":
-            return inquire.prompt([
-                {
-                    type: "number",
-                    name: "manager_id",
-                    message: "Enter the manager's id to view employees they manage",
-                    validate: response => {
-                        if(response) {
-                            return true;
-                        }
-                    }
-                }
-            ])
-
-            .then(response => {
-                employeeByManager(response.manager_id);
-            });
-        
-        case "View Employee by their department":
-            return inquire.prompt([
-                {
-                    type: "number",
-                    name: "id",
-                    message: "Enter the department's id to view employees that work in it",
-                    validate: response => {
-                        if(response) {
-                            return true;
-                        }
-                    }
-                }
-            ])
-
-            .then(response => {
-                employeesByDepartment(response.id);
-            });
-
         case "Add Employee":
             return inquire.prompt([
                 {
@@ -262,22 +226,17 @@ employeePrompts = data => {
                 {
                     type: "number",
                     name: "role_id",
-                    message: "Enter this employee's role",
+                    message: "Enter this employee's role ID",
                     validate: response => {
                         if(response) {
                             return true;
                         }
                     }
                 },
-                {
-                    type: "number",
-                    name: "manager_id",
-                    message: "Enter the manager id for this employee",
-                }
             ])
 
             .then((response) => {
-                addEmployee(response.first_name, response.last_name, response.role_id, response.manager_id);
+                addEmployee(response.first_name, response.last_name, response.role_id);
             })
 
         case "Remove Employee":
