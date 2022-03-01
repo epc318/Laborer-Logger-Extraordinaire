@@ -3,7 +3,12 @@
 ## Description
 Labor Logger Extraordinaire is an executive business application that allows adminstrative business staff to store, view, and manage simple employee data. This application is run via the terminal, or command line, and requires installation and use of Node.js, MySQL2, and Inquirer.
 
-## Purpose
+## User Story
+* AS A business owner
+
+* I WANT to be able to view and manage the departments, roles, and employees in my company
+
+* SO THAT I can organize and plan my business
 
 
 ## Table of Contents
