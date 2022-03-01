@@ -1,14 +1,17 @@
+//connections to external files
 const dataBase = require("./db/sqlconnect.js");
 const inquire = require("inquirer");
 const { getAllDepartments, addDepartment, removeDepartment } = require("./routes/APIroutes/department");
 const { getAllRoles, addRole, removeRole } = require("./routes/APIroutes/role");
 const { getAllEmployees, addEmployee, removeEmployee } = require("./routes/APIroutes/employee");
 
+//connecting to the previously established sql database
 dataBase.connect(err => {
     if(err)
     throw err;
 });
 
+// First prompts asking users what sector they want and what they want to do with it
 const initialPrompt = () => {
     return inquire.prompt([
         {
@@ -23,10 +26,11 @@ const initialPrompt = () => {
             ]
         },
 
+        // if User chooses Departments
         {
             type: "list",
             name: "action",
-            message: "What do you need to do with Departments today?",
+            message: "What do you need to do within Departments today?",
             choices:
             [
                 "View ALL Departments",
@@ -43,6 +47,7 @@ const initialPrompt = () => {
             }
         },
 
+        // if User chooses Roles
         {
             type: "list",
             name: "action",
@@ -63,6 +68,7 @@ const initialPrompt = () => {
             }
         },
 
+        // if User chooses Employees
         {
             type: "list",
             name: "action",
@@ -89,12 +95,15 @@ const initialPrompt = () => {
     })
 };
 
+//Prompts is user chooses any of the 3 Department options in the initialPrompt above
 departmentPrompts = data => {
     switch(data.action) {
+        // user chooses View ALL Departments and the getAllDepartments function from department.js runs
         case "View ALL Departments":
             getAllDepartments();
             break;
 
+        // user chooses Add Department, is prompted for necessary info, info is validated and the addDepartment function from department.js runs
         case "Add Department":
             return inquire.prompt([
                 {
@@ -113,6 +122,7 @@ departmentPrompts = data => {
                 addDepartment(response.name);
             })
 
+        // user chooses Remove Department, is prompted for necessary info, info is validated and the removeDepartment function from department.js runs
         case "Remove Department":
             return inquire.prompt([
                 {
@@ -133,11 +143,15 @@ departmentPrompts = data => {
     }
 };
 
+//Prompts is user chooses any of the 3 Roles options in the initialPrompt above
 rolePrompts = data => {    
     switch(data.action) {
+        // user chooses View ALL Roles and the getAllRoles function from role.js runs
         case "View ALL Roles":
             getAllRoles();
             break;
+
+        // user chooses Add Role, is prompted for necessary info, info is validated and the addRole function from role.js runs
         case "Add Role":
             return inquire.prompt([
                 {
@@ -176,6 +190,7 @@ rolePrompts = data => {
                 addRole(response.title, response.salary, response.department_id);
             })
 
+        // user chooses Remove Role, is prompted for necessary info, info is validated and the removeRole function from role.js runs           
         case "Remove Role":
             return inquire.prompt([
                 {
@@ -196,11 +211,15 @@ rolePrompts = data => {
     }
 };
 
+//Prompts is user chooses any of the 3 Employees options in the initialPrompt above
 employeePrompts = data => {
     switch(data.action) {
+        // user chooses View ALL Employees and the getAllEmployees function from employee.js runs
         case "View ALL Employees":
             getAllEmployees();
             break;
+        
+        // user chooses Add Employee, is prompted for necessary info, info is validated and the addEmployee function from employee.js runs
         case "Add Employee":
             return inquire.prompt([
                 {
@@ -239,6 +258,7 @@ employeePrompts = data => {
                 addEmployee(response.first_name, response.last_name, response.role_id);
             })
 
+        // user chooses Remove Employee, is prompted for necessary info, info is validated and the removeEmployee function from employee.js runs
         case "Remove Employee":
             return inquire.prompt([
                 {
@@ -260,6 +280,7 @@ employeePrompts = data => {
 };
 
 
+// After user finishes, adding, removing or viewing a sector, they are re-directed to the intial prompt. (not working at the moment)
 initialPrompt()
     .then(response => {
         if(response.sector === "Departments") {
@@ -271,4 +292,4 @@ initialPrompt()
         else if(response.sector === "Employees") {
             employeePrompts(response);
         }
-    });
+    })
