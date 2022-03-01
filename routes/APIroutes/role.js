@@ -1,5 +1,6 @@
 const dataBase = require("../../db/sqlconnect");
 
+//function to get all existing Roles in Database
 getAllRoles = () => {
     const sqlDB = `SELECT role.title, role.id, role.salary, department.name AS department
                  FROM role
@@ -17,6 +18,7 @@ getAllRoles = () => {
     });
 };
 
+//function to add roles to Database
 addRole = (title, salary, department_id) => {
     const sqlDB = `INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`;
     const condition  = [title, salary, department_id];
@@ -28,6 +30,7 @@ addRole = (title, salary, department_id) => {
     });
 };
 
+//function to remove employees from Database
 removeRole = (title) => {
     const sqlDB = `DELETE FROM role WHERE title = ?`;
     dataBase.query(sqlDB, title, (err, result) => {

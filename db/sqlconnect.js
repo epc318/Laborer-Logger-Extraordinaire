@@ -1,5 +1,6 @@
 const sql = require("mysql2");
 
+//sql Database connection and parameters
 const dataBase = sql.createConnection(
     {
         host: "localhost",

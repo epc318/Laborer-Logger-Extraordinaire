@@ -280,16 +280,15 @@ employeePrompts = data => {
 };
 
 
-// After user finishes, adding, removing or viewing a sector, they are re-directed to the intial prompt. (not working at the moment)
 initialPrompt()
-    .then(response => {
-        if(response.sector === "Departments") {
-            departmentPrompts(response);
-        }
-        else if(response.sector === "Roles") {
-            rolePrompts(response);
-        }
-        else if(response.sector === "Employees") {
-            employeePrompts(response);
-        }
-    })
+.then(response => {
+    if(response.sector === "Departments") {
+        departmentPrompts(response)
+    }
+    else if(response.sector === "Roles") {
+        rolePrompts(response)
+    }
+    else if(response.sector === "Employees") {
+        employeePrompts(response)
+    }
+})
